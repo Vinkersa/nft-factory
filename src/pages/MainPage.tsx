@@ -1,5 +1,11 @@
+import ConnectButton from "@components/ConnectButton/ConnectButton";
+
 const MainPage = () => {
-  return <div>Main page</div>;
+  return (
+    <div>
+      <ConnectButton />
+    </div>
+  );
 };
 
 export default MainPage;

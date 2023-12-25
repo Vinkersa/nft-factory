@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@styles/theme";
 import { SnackbarProvider } from "notistack";
+import { WagmiConfig } from "wagmi";
+import wagmiConfig from "@configs/wagmiConfig";
 
 const queryClient = new QueryClient();
 
@@ -14,10 +16,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <SnackbarProvider>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <WagmiConfig config={wagmiConfig}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </WagmiConfig>
     </QueryClientProvider>
   </SnackbarProvider>,
 );
