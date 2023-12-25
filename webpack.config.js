@@ -3,7 +3,7 @@ import path, { dirname } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ESLintWebpackPlugin from "eslint-webpack-plugin";
-import CopeWebpackPlugin from "copy-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 import webpack from "webpack";
 import dotenv from "dotenv";
 
@@ -46,7 +46,7 @@ const webpackConfig = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new CopeWebpackPlugin({
+    new CopyWebpackPlugin({
       patterns: [
         { from: "./public/manifest.json", to: "manifest.json" },
         { from: "./public/logo192.svg", to: "logo192.svg" },

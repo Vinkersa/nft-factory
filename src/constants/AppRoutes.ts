@@ -1,5 +1,7 @@
 enum AppRoutes {
-  main = "/",
+  dashboard = "/dashboard",
+  deployCollection = "/dashboard/deploy",
+  collections = "/dashboard/collections",
 }
 
 export default AppRoutes;

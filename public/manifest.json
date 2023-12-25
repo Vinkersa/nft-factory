@@ -1,7 +1,7 @@
 {
-  "name": "React",
-  "short_name": "React",
-  "description": "React",
+  "name": "NFT Factory",
+  "short_name": "NFT Factory",
+  "description": "NFT Factory",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone",

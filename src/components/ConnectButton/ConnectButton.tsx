@@ -12,7 +12,7 @@ const ConnectButton = () => {
   if (!address) {
     return (
       <Button variant={"contained"} onClick={() => open()}>
-        Connect
+        Connect wallet
       </Button>
     );
   }
