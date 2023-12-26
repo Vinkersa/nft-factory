@@ -1,4 +1,5 @@
 import { Components, Theme } from "@mui/material";
+import { inputBackground } from "@styles/colors";
 
 const getOverridesComponents = (theme: Theme): Components => ({
   MuiCssBaseline: {
@@ -21,6 +22,17 @@ const getOverridesComponents = (theme: Theme): Components => ({
         borderRadius: theme.spacing(4),
         fontSize: 20,
         textTransform: "none",
+      },
+    },
+  },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      input: {
+        backgroundColor: inputBackground,
+        borderRadius: 40,
+      },
+      notchedOutline: {
+        borderRadius: 40,
       },
     },
   },
