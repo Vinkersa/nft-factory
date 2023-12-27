@@ -1,7 +1,7 @@
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { Button } from "@mui/material";
 import { useAccount } from "wagmi";
-import useIsWrongChain from "@services/useIsWrongChain";
+import useIsWrongChain from "@services/hooks/useIsWrongChain";
 import textToWithDots from "@utils/textToWithDots";
 
 const ConnectButton = () => {

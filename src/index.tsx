@@ -14,7 +14,10 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <SnackbarProvider>
+  <SnackbarProvider
+    maxSnack={4}
+    anchorOrigin={{ horizontal: "right", vertical: "top" }}
+  >
     <QueryClientProvider client={queryClient}>
       <WagmiConfig config={wagmiConfig}>
         <ThemeProvider theme={theme}>

@@ -34,7 +34,16 @@ const createContractSchema = yup.object({
       (value, context) => value <= context.parent.maxNFTSupply,
     )
     .required(),
-  price: yup.number().min(0).default(0).required(),
+  price: yup
+    .string()
+    .default("0")
+    .test("is valid price", "not valid price", (value) => !isNaN(+value))
+    .test(
+      "is positive value",
+      "price can't be less than 0",
+      (value) => +value >= 0,
+    )
+    .required(),
   isPaused: yup.boolean().default(false).required(),
 });
 

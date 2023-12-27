@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import ICreateContract from "@models/ICreateContract";
 import { yupResolver } from "@hookform/resolvers/yup";
 import createContractSchema from "@models/createContractSchema";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import theme from "@styles/theme";
 import HelpIcon from "@mui/icons-material/Help";
+import { LoadingButton } from "@mui/lab";
 
 const classes = {
   root: {
@@ -48,6 +49,9 @@ const classes = {
     alignItems: "center",
     gap: 1,
   },
+  btn: {
+    width: "50%",
+  },
 };
 
 const titles: Record<
@@ -85,11 +89,11 @@ const titles: Record<
 };
 
 type Props = {
-  submitBtn: ReactNode;
   onSubmit: (formData: ICreateContract) => void;
+  isLoading: boolean;
 };
 
-const DashboardDeployForm: FC<Props> = ({ submitBtn, onSubmit }) => {
+const DashboardDeployForm: FC<Props> = ({ onSubmit, isLoading }) => {
   const {
     register,
     handleSubmit,
@@ -159,7 +163,16 @@ const DashboardDeployForm: FC<Props> = ({ submitBtn, onSubmit }) => {
         );
       })}
 
-      <Box sx={classes.btnContainer}>{submitBtn}</Box>
+      <Box sx={classes.btnContainer}>
+        <LoadingButton
+          loading={isLoading}
+          sx={classes.btn}
+          variant={"contained"}
+          type={"submit"}
+        >
+          Deploy collection
+        </LoadingButton>
+      </Box>
     </Box>
   );
 };
