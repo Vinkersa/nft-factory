@@ -7,15 +7,14 @@ import {
   useNftFactoryCreateErc721,
 } from "@services/contracts/NFTFactory";
 import { useSnackbar } from "notistack";
-import { useNetwork, useWaitForTransaction } from "wagmi";
+import { useWaitForTransaction } from "wagmi";
 import { useNavigate } from "react-router-dom";
 import AppRoutes from "@constants/AppRoutes";
-import strPriceToBigInt from "@utils/strPriceToBigInt";
+import { parseEther } from "viem";
 
 const DashboardDeployPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const { chain } = useNetwork();
   const { data: deployFee = BigInt(0), isLoading: isLoadingFee } =
     useNftFactoryFee();
   const {
@@ -38,16 +37,14 @@ const DashboardDeployPage = () => {
 
   const onSubmit = useCallback(
     (formData: ICreateContract) => {
-      if (deployFee && chain) {
+      if (deployFee) {
         deployCollection({
           args: [
             formData.name,
             formData.symbol,
             BigInt(formData.maxNFTSupply),
             BigInt(formData.maxMintCount),
-            BigInt(
-              strPriceToBigInt(formData.price, chain.nativeCurrency.decimals),
-            ),
+            parseEther(formData.price),
             BigInt(formData.preMint),
             formData.isPaused,
           ],
@@ -55,7 +52,7 @@ const DashboardDeployPage = () => {
         });
       }
     },
-    [deployFee, deployCollection, chain],
+    [deployFee, deployCollection],
   );
 
   return (

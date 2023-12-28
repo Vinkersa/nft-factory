@@ -16,6 +16,13 @@ const getOverridesComponents = (theme: Theme): Components => ({
       },
     },
   },
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        borderRadius: theme.spacing(3),
+      },
+    },
+  },
   MuiButton: {
     styleOverrides: {
       root: {

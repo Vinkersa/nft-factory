@@ -7,3 +7,5 @@ export const textGray = "#878f9a";
 export const primary = "#5356fb";
 
 export const border = "#292967";
+
+export const grayBorder = "#404040";
