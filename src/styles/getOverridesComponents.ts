@@ -27,8 +27,10 @@ const getOverridesComponents = (theme: Theme): Components => ({
     styleOverrides: {
       root: {
         borderRadius: theme.spacing(4),
-        fontSize: 20,
         textTransform: "none",
+        ":disabled": {
+          color: "rgba(255, 255, 255, 0.26)",
+        },
       },
     },
   },
@@ -37,6 +39,9 @@ const getOverridesComponents = (theme: Theme): Components => ({
       input: {
         backgroundColor: inputBackground,
         borderRadius: 40,
+        ":disabled": {
+          "-webkit-text-fill-color": "rgba(255, 255, 255, 0.26)",
+        },
       },
       notchedOutline: {
         borderRadius: 40,

@@ -10,6 +10,9 @@ const classes = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(700px, 1fr))",
     gap: 4,
+    [theme.breakpoints.down("lg")]: {
+      gridTemplateColumns: "repeat(1, 1fr)",
+    },
     [theme.breakpoints.down("md")]: {
       gap: 2,
     },

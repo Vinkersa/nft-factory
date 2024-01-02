@@ -4,6 +4,12 @@ import { useAccount } from "wagmi";
 import useIsWrongChain from "@services/hooks/useIsWrongChain";
 import textToWithDots from "@utils/textToWithDots";
 
+const classes = {
+  btn: {
+    fontSize: 20,
+  },
+};
+
 const ConnectButton = () => {
   const isWrongChain = useIsWrongChain();
   const { open } = useWeb3Modal();
@@ -11,7 +17,7 @@ const ConnectButton = () => {
 
   if (!address) {
     return (
-      <Button variant={"contained"} onClick={() => open()}>
+      <Button sx={classes.btn} variant={"contained"} onClick={() => open()}>
         Connect wallet
       </Button>
     );
@@ -19,14 +25,18 @@ const ConnectButton = () => {
 
   if (isWrongChain) {
     return (
-      <Button variant={"contained"} onClick={() => open({ view: "Networks" })}>
+      <Button
+        sx={classes.btn}
+        variant={"contained"}
+        onClick={() => open({ view: "Networks" })}
+      >
         Change network
       </Button>
     );
   }
 
   return (
-    <Button variant={"contained"} onClick={() => open()}>
+    <Button sx={classes.btn} variant={"contained"} onClick={() => open()}>
       {textToWithDots(address)}
     </Button>
   );

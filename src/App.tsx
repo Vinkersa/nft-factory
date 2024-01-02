@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy } from "react";
 import AppRoutes from "@constants/AppRoutes";
 import DashboardLayout from "@components/DashboardLayout/DashboardLayout";
+import DashboardCollectionDetailsPage from "@pages/DashboardCollectionDetailsPage";
 
 const DashboardDeployPage = lazy(() => import("@pages/DashboardDeployPage"));
 const DashboardCollectionsPage = lazy(
@@ -20,6 +21,10 @@ const App = () => {
           <Route
             path={AppRoutes.collections}
             element={<DashboardCollectionsPage />}
+          />
+          <Route
+            path={`${AppRoutes.collection}/:collectionAddress`}
+            element={<DashboardCollectionDetailsPage />}
           />
         </Route>
         <Route

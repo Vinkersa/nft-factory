@@ -14,6 +14,7 @@ import MintStatus from "@constants/MintStatus";
 import textToWithDots from "@utils/textToWithDots";
 import { useNavigate } from "react-router-dom";
 import AppRoutes from "@constants/AppRoutes";
+import { useBalance } from "wagmi";
 
 const classes = {
   root: {
@@ -24,6 +25,8 @@ const classes = {
     [theme.breakpoints.down("lg")]: {
       flexDirection: "column-reverse",
       height: "auto",
+      minWidth: "auto",
+      width: "100%",
     },
   },
   contentContainer: {
@@ -51,6 +54,7 @@ const classes = {
   },
   iconButton: {
     color: theme.palette.text.primary,
+    padding: 0,
   },
   chip: {
     textTransform: "uppercase",
@@ -66,7 +70,6 @@ const classes = {
   imgContainer: {
     flex: "none",
     width: 300,
-    height: 300,
     [theme.breakpoints.down("lg")]: {
       width: "100%",
     },
@@ -80,11 +83,14 @@ const classes = {
 
 type Props = {
   collectionAddress: ethString;
+  isDetails?: boolean;
 };
 
-const DashboardCollection: FC<Props> = ({ collectionAddress }) => {
+const DashboardCollection: FC<Props> = ({ collectionAddress, isDetails }) => {
   const navigate = useNavigate();
   const { data, isLoading } = useGetNFTContractData(collectionAddress);
+  const { data: contractBalance, isLoading: isLoadingContractBalance } =
+    useBalance({ address: collectionAddress });
 
   const mintStatus: MintStatus | undefined = useMemo(() => {
     if (data) {
@@ -108,8 +114,9 @@ const DashboardCollection: FC<Props> = ({ collectionAddress }) => {
           </Typography>
         </Box>
         <Box sx={classes.textFlexContainer}>
-          <Typography variant={"body1"}>
-            Collection address: {textToWithDots(collectionAddress)}
+          <Typography variant={"body1"} sx={{ wordBreak: "break-all" }}>
+            Collection address:{" "}
+            {isDetails ? collectionAddress : textToWithDots(collectionAddress)}
           </Typography>
           <IconButton
             sx={classes.iconButton}
@@ -139,17 +146,32 @@ const DashboardCollection: FC<Props> = ({ collectionAddress }) => {
             }
           />
         </Box>
-        <Box sx={classes.btnContainer}>
-          <Button
-            variant={"contained"}
-            onClick={() =>
-              navigate(`${AppRoutes.collection}/${collectionAddress}`)
-            }
-            sx={classes.btn}
-          >
-            Details
-          </Button>
-        </Box>
+        {isDetails && (
+          <Typography variant={"body1"}>
+            IPFS hash: {data.baseTokenURI}
+          </Typography>
+        )}
+        {isDetails && (
+          <Typography variant={"body1"}>
+            Contract balance:{" "}
+            {isLoadingContractBalance || !contractBalance
+              ? "loading..."
+              : contractBalance.formatted + " " + contractBalance.symbol}
+          </Typography>
+        )}
+        {!isDetails && (
+          <Box sx={classes.btnContainer}>
+            <Button
+              variant={"contained"}
+              onClick={() =>
+                navigate(`${AppRoutes.collection}/${collectionAddress}`)
+              }
+              sx={classes.btn}
+            >
+              Details
+            </Button>
+          </Box>
+        )}
       </Box>
       <Box sx={classes.imgContainer}>
         <Box sx={classes.img} component={"img"} src={DefaultCollectionImg} />
