@@ -39,18 +39,25 @@ const classes = {
   },
   btnContainer: {
     display: "flex",
+    flexDirection: "column",
     gap: 2,
+    [theme.breakpoints.down("xl")]: {
+      flexDirection: "row",
+    },
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
   formControlLabel: {
     width: "fit-content",
+    marginTop: "auto",
   },
   textFieldContainer: {
     display: "flex",
-    marginLeft: "auto",
     flex: 1,
+    [theme.breakpoints.down("xl")]: {
+      marginLeft: "auto",
+    },
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     },

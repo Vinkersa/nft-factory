@@ -9,8 +9,12 @@ const classes = {
   root: {
     width: "100%",
     display: "flex",
-    flexDirection: "column",
+    justifyContent: "center",
     gap: 4,
+    [theme.breakpoints.down("xl")]: {
+      flexDirection: "column",
+      justifyContent: "start",
+    },
     [theme.breakpoints.down("md")]: {
       gap: 2,
     },

@@ -19,7 +19,6 @@ import { useBalance } from "wagmi";
 const classes = {
   root: {
     minWidth: 700,
-    height: 300,
     display: "flex",
     justifyContent: "space-between",
     [theme.breakpoints.down("lg")]: {
