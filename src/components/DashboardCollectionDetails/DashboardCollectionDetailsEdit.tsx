@@ -204,7 +204,7 @@ const DashboardCollectionDetailsEdit: FC<Props> = ({ collectionAddress }) => {
         </LoadingButton>
         <Box sx={classes.textFieldContainer}>
           <TextField
-            placeholder={"IPFS hash"}
+            placeholder={"Base token URI"}
             disabled={!approved}
             value={hash}
             onChange={(e) => setHash(e.target.value)}

@@ -147,7 +147,7 @@ const DashboardCollection: FC<Props> = ({ collectionAddress, isDetails }) => {
         </Box>
         {isDetails && (
           <Typography variant={"body1"}>
-            IPFS hash: {data.baseTokenURI}
+            Base token URI: {data.baseTokenURI}
           </Typography>
         )}
         {isDetails && (
