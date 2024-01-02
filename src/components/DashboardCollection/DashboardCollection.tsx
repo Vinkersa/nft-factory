@@ -17,10 +17,14 @@ import AppRoutes from "@constants/AppRoutes";
 
 const classes = {
   root: {
-    width: "100%",
+    minWidth: 700,
     height: 300,
     display: "flex",
     justifyContent: "space-between",
+    [theme.breakpoints.down("lg")]: {
+      flexDirection: "column-reverse",
+      height: "auto",
+    },
   },
   contentContainer: {
     width: "100%",
@@ -63,6 +67,9 @@ const classes = {
     flex: "none",
     width: 300,
     height: 300,
+    [theme.breakpoints.down("lg")]: {
+      width: "100%",
+    },
   },
   img: {
     width: "100%",

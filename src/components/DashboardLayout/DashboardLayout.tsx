@@ -23,7 +23,7 @@ const classes = {
     display: "flex",
     flexDirection: "column",
     gap: 4,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       gap: 2,
     },
   },

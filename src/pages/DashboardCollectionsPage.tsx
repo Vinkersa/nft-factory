@@ -2,13 +2,17 @@ import { useNftFactoryContractsByOwner } from "@services/contracts/NFTFactory";
 import { useAccount } from "wagmi";
 import { Box } from "@mui/material";
 import DashboardCollection from "@components/DashboardCollection/DashboardCollection";
+import theme from "@styles/theme";
 
 const classes = {
   root: {
     width: "100%",
-    display: "flex",
-    flexDirection: "column",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(700px, 1fr))",
     gap: 4,
+    [theme.breakpoints.down("md")]: {
+      gap: 2,
+    },
   },
 };
 
