@@ -1,5 +1,5 @@
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
-import { mainnet, sepolia } from "viem/chains";
+import { sepolia } from "viem/chains";
 
 const projectId = process.env.WC_PROJECT_ID || "";
 
@@ -10,7 +10,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-export const chains = [sepolia, mainnet];
+export const chains = [sepolia];
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
 
 createWeb3Modal({ wagmiConfig, projectId, chains });

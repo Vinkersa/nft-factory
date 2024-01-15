@@ -6,6 +6,7 @@ import theme from "@styles/theme";
 import { SnackbarProvider } from "notistack";
 import { WagmiConfig } from "wagmi";
 import wagmiConfig from "@configs/wagmiConfig";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,9 @@ root.render(
       <WagmiConfig config={wagmiConfig}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </ThemeProvider>
       </WagmiConfig>
     </QueryClientProvider>

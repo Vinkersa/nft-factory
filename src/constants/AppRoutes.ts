@@ -1,4 +1,5 @@
 enum AppRoutes {
+  login = "/login",
   dashboard = "/dashboard",
   deployCollection = "/dashboard/deploy",
   collections = "/dashboard/collections",
