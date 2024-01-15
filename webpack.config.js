@@ -6,10 +6,10 @@ import ESLintWebpackPlugin from "eslint-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import webpack from "webpack";
 import dotenv from "dotenv";
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -61,7 +61,7 @@ const webpackConfig = {
       failOnError: true,
     }),
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.config().parsed),
+      "process.env": JSON.stringify(process.env),
     }),
   ].filter(Boolean),
   optimization: {
